@@ -1,0 +1,30 @@
+.card {
+  height: 30vh;
+  width: 25vw;
+  background-color: aquamarine;
+  margin: 1rem;
+}
+
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1rem;
+}
+
+.buttons button {
+  height: 2rem;
+
+}
+
+img {
+  height: 5rem;
+  display: flex;
+  margin: auto;
+}
+
+.cancel {
+  float: right;
+  border: none;
+  border-radius: 50%;
+}
