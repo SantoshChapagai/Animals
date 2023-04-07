@@ -1,30 +1,57 @@
-.card {
-  height: 30vh;
-  width: 25vw;
-  background-color: aquamarine;
-  margin: 1rem;
+.card_container {
+  margin-top: 2rem;
 }
 
+.card {
+  height: 18.2rem;
+  width: 16rem;
+  background-color: white;
+  margin: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px antiquewhite;
+  position: relative;
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+}
 
 .buttons {
   display: flex;
-  justify-content: space-between;
-  margin: 0 1rem;
+  justify-content: space-around;
+
 }
 
 .buttons button {
-  height: 2rem;
+  height: 2.5rem;
+  font-size: 1.8rem;
+  border: none;
+  background-color: white;
+  box-shadow: 0 0 10px white;
+}
 
+.buttons button:hover {
+  scale: 1.2;
 }
 
 img {
-  height: 5rem;
-  display: flex;
-  margin: auto;
+  height: 12rem;
+  width: 16rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px white;
+}
+
+img:hover {
+  filter: contrast(150%);
 }
 
 .cancel {
-  float: right;
-  border: none;
-  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  box-shadow: 0 0 2px white;
+}
+
+.likes {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
 }

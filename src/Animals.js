@@ -9,8 +9,11 @@ const Animals = (props) => {
   })
   return (
     <div>
-      <h2>Animals {props.data.length}</h2>
-      <Search searchHandler={props.searchHandler} />
+      <h2>Animals</h2>
+      <h3>{props.data.length}</h3>
+      <div className='search'>
+        <Search searchHandler={props.searchHandler} />
+      </div>
       <div className='animal_grid'>
         {animalFilter.map(item => <Card key={item.name} name={item.name} likes={item.likes} removeCard={() => props.removeHandler(item.name)} addLikes={() => props.likesHandler(item.name, 'add')} removeLikes={() => props.likesHandler(item.name, 'remove')} />)}
       </div>

@@ -2,3 +2,9 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
+
+h2,
+h3,
+.search {
+  text-align: center;
+}
