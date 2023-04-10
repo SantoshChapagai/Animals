@@ -12,6 +12,11 @@
   position: relative;
 }
 
+.card:hover {
+  scale: 1.2;
+  transform: rotate(5deg);
+}
+
 .card h3 {
   margin-bottom: 0.5rem;
 }
