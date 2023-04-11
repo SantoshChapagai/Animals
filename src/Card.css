@@ -6,15 +6,10 @@
   height: 18.2rem;
   width: 16rem;
   background-color: white;
-  margin: 1rem;
+  margin: 1rem 1.5rem;
   border-radius: 5px;
   box-shadow: 0 0 10px antiquewhite;
   position: relative;
-}
-
-.card:hover {
-  scale: 1.2;
-  transform: rotate(5deg);
 }
 
 .card h3 {
@@ -33,6 +28,7 @@
   border: none;
   background-color: white;
   box-shadow: 0 0 10px white;
+  color: blue;
 }
 
 .buttons button:hover {
@@ -59,8 +55,4 @@ img:hover {
 .likes {
   font-size: 1.5rem;
   margin-top: 0.5rem;
-}
-
-.buttons button {
-  color: blue;
 }

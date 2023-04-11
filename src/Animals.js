@@ -10,7 +10,7 @@ const Animals = (props) => {
   return (
     <div>
       <h2>Animals</h2>
-      <h3>{props.data.length}</h3>
+      <h3>{animalFilter.length}</h3>
       <div className='search'>
         <Search searchHandler={props.searchHandler} />
       </div>
