@@ -15,7 +15,7 @@ const Birds = (props) => {
         <Search searchHandler={props.searchHandler} />
       </div>
       <div className='animal_grid'>
-        {birdsFilter.map(item => <Card key={item.name} name={item.name} likes={item.likes} removeCard={() => props.removeHandler(item.name)} addLikes={() => props.likesHandler(item.name, 'add')} removeLikes={() => props.likesHandler(item.name, 'remove')} />)}
+        {birdsFilter.map(item => <Card key={item.name} name={item.name} likes={item.likes} removeCard={() => props.removeHandler(item.name)} addLikes={() => props.likeHandler(item.name, 'add')} removeLikes={() => props.likeHandler(item.name, 'remove')} />)}
       </div>
     </div>
   );
