@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
-import Animals from './Animals';
-import Birds from './Birds';
+import Animals from './pages/Animals';
+import Birds from './pages/Birds';
+import './App.css';
 // import Header from './Header';
 // import Footer from './Footer';
-import Home from './Home'
-import About from './About'
+import Home from './pages/Home'
+import About from './pages/About'
 import { animals, birds } from './animalsList';
 
 
@@ -43,11 +44,8 @@ class App extends Component {
       })
       return {
         animals: updatedArray
-      }
-    })
-
-  }
-  likeHandler = (name, action) => {
+      };
+    });
     this.setState((prevState) => {
       const birdsArray = prevState.birds.map((bird) => {
         if (bird.name === name) {
@@ -58,18 +56,16 @@ class App extends Component {
 
           }
         } else {
-          return bird
+          return bird;
         }
 
       })
       return {
         birds: birdsArray
-      }
-    })
+      };
+    });
 
   }
-
-
   searchHandler = (e) => {
     this.setState({
       searchInput: e.target.value
@@ -80,22 +76,24 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <nav>
-            <ul>
-              <li>
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-                <NavLink to="./Animals">Animals</NavLink>
-              </li>
-              <li>
-                <NavLink to="./Birds">Birds</NavLink>
-              </li>
-              <li>
-                <NavLink to="./About">About</NavLink>
-              </li>
-            </ul>
-          </nav>
+          <div>
+            <nav>
+              <ul>
+                <li>
+                  <NavLink to="/">Home</NavLink>
+                </li>
+                <li>
+                  <NavLink to="./animals" className={animals}>Animals({animals.length})</NavLink>
+                </li>
+                <li>
+                  <NavLink to="./Birds">Birds({birds.length})</NavLink>
+                </li>
+                <li>
+                  <NavLink to="./About">About</NavLink>
+                </li>
+              </ul>
+            </nav>
+          </div>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="Animals" element={<Animals data={this.state.animals} removeHandler={this.removeHandler}
@@ -104,7 +102,7 @@ class App extends Component {
               searchInput={this.state.searchInput} />} />
             <Route path="Birds" element={<Birds data={this.state.birds}
               removeHandler={this.removeHandler}
-              likesHandler={this.likeHandler}
+              likesHandler={this.likesHandler}
               searchHandler={this.searchHandler}
               searchInput={this.state.searchInput} />} />
             <Route path="About" element={<About />} />
