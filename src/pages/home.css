@@ -1,19 +1,21 @@
 .card_container {
   display: flex;
-  justify-content: space-around;
+  margin: 0;
 }
 
 .holder {
-  height: 25rem;
-  width: 22rem;
+  height: 75vh;
+  width: 50vw;
 }
 
 .animals {
   background: url('https://media.istockphoto.com/id/173547154/fi/valokuva/kultapanda.jpg?s=612x612&w=0&k=20&c=N_qR0wBMhAbpyuOhIyNuFpkipdfQZCqv2V6iZetYSPM=')no-repeat center center/cover;
   color: white;
+  padding: 1rem;
 }
 
 .birds {
-  background: url('https://images.unsplash.com/photo-1589792351116-53074a88aabe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cGFycm90fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60')no-repeat center center/cover;
+  background: url('https://images.unsplash.com/photo-1589792351116-53074a88aabe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cGFycm90fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60')no-repeat top center/cover;
   color: white;
+  padding: 1rem;
 }

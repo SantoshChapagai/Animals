@@ -4,7 +4,7 @@ import Animals from './pages/Animals';
 import Birds from './pages/Birds';
 import './App.css';
 // import Header from './Header';
-// import Footer from './Footer';
+import Footer from './components/Footer';
 import Home from './pages/Home'
 import About from './pages/About'
 import { animals, birds } from './animalsList';
@@ -74,41 +74,44 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <div>
+      <div>
+        <BrowserRouter>
           <div>
-            <nav>
-              <ul>
-                <li>
-                  <NavLink to="/">Home</NavLink>
-                </li>
-                <li>
-                  <NavLink to="./animals" className={animals}>Animals({animals.length})</NavLink>
-                </li>
-                <li>
-                  <NavLink to="./Birds">Birds({birds.length})</NavLink>
-                </li>
-                <li>
-                  <NavLink to="./About">About</NavLink>
-                </li>
-              </ul>
-            </nav>
+            <div>
+              <nav>
+                <ul>
+                  <li>
+                    <NavLink to="/">Home</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/animals">Animals({this.state.animals.length})</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/Birds">Birds({this.state.birds.length})</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="./About">About</NavLink>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="animals" element={<Animals data={this.state.animals} removeHandler={this.removeHandler}
+                likesHandler={this.likesHandler}
+                searchHandler={this.searchHandler}
+                searchInput={this.state.searchInput} />} />
+              <Route path="birds" element={<Birds data={this.state.birds}
+                removeHandler={this.removeHandler}
+                likesHandler={this.likesHandler}
+                searchHandler={this.searchHandler}
+                searchInput={this.state.searchInput} />} />
+              <Route path="About" element={<About />} />
+            </Routes>
           </div>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="Animals" element={<Animals data={this.state.animals} removeHandler={this.removeHandler}
-              likesHandler={this.likesHandler}
-              searchHandler={this.searchHandler}
-              searchInput={this.state.searchInput} />} />
-            <Route path="Birds" element={<Birds data={this.state.birds}
-              removeHandler={this.removeHandler}
-              likesHandler={this.likesHandler}
-              searchHandler={this.searchHandler}
-              searchInput={this.state.searchInput} />} />
-            <Route path="About" element={<About />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+        <Footer />
+      </div>
 
 
       // <div className='list'>

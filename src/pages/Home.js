@@ -1,16 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './home.css';
 import './Birds'
 const Home = () => {
   return (
     <div className='card_container'>
-      <div className='holder animals'>
+      <Link to="/animals"><div className='holder animals'>
         <h2>Animals</h2>
       </div>
-      <div className='holder birds'>
+      </Link>
+      <Link to="/birds"><div className='holder birds'>
         <h2>Birds</h2>
       </div>
-
+      </Link>
     </div>
   );
 };

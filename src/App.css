@@ -4,12 +4,15 @@ nav ul {
   justify-content: center;
   background-color: rgb(240, 211, 211);
   padding: 1.5rem;
-  margin-top: 0;
-
+  margin: 0;
 }
 
 nav ul li {
   display: flex;
-  margin: 0.5rem;
+  padding: 0.5rem;
   font-size: larger;
+}
+
+a {
+  text-decoration: none;
 }
