@@ -1,5 +1,5 @@
 import React from 'react';
-import './Card.css'
+import './ui.css'
 
 const card = (props) => {
   return (

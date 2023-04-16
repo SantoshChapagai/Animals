@@ -1,134 +1,82 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, } from 'react-router-dom';
 import Animals from './pages/Animals';
 import Birds from './pages/Birds';
 import './App.css';
-// import Header from './Header';
+import Header from './components/Header';
 import Footer from './components/Footer';
-import Home from './pages/Home'
-import About from './pages/About'
+import Home from './pages/Home';
+import About from './pages/About';
 import { animals, birds } from './animalsList';
 
-
 class App extends Component {
+
   state = {
     animals: animals,
     birds: birds,
     title: 'Animal Land',
     searchInput: ''
   }
-  removeHandler = (name) => {
-    const updatedArray = this.state.animals.filter(animal => animal.name !== name)
-    this.setState({
-      animals: updatedArray
-    })
-    const birdsArray = this.state.birds.filter(bird => bird.name !== name)
-    this.setState({
-      birds: birdsArray
-    })
-  }
-  likesHandler = (name, action) => {
-    this.setState((prevState) => {
-      const updatedArray = prevState.animals.map((animal) => {
-        if (animal.name === name) {
-          if (action === 'add') {
-            return { ...animal, likes: animal.likes + 1 }
-          } else {
-            return { ...animal, likes: animal.likes - 1 }
 
-          }
-        } else {
-          return animal
+
+
+  // Handler function for removing
+  removeHandler = (type, name) => {
+    const updatedArray = this.state[type].filter(item => item.name !== name);
+    this.setState({ [type]: updatedArray });
+  }
+
+  // Handler function for liking or disliking
+  likesHandler = (type, name, action) => {
+    this.setState(prevState => {
+      const updatedArray = prevState[type].map(item => {
+        if (item.name === name) {
+          return { ...item, likes: action === 'add' ? item.likes + 1 : item.likes - 1 };
         }
-
-      })
-      return {
-        animals: updatedArray
-      };
+        return item;
+      });
+      return { [type]: updatedArray };
     });
-    this.setState((prevState) => {
-      const birdsArray = prevState.birds.map((bird) => {
-        if (bird.name === name) {
-          if (action === 'add') {
-            return { ...bird, likes: bird.likes + 1 }
-          } else {
-            return { ...bird, likes: bird.likes - 1 }
-
-          }
-        } else {
-          return bird;
-        }
-
-      })
-      return {
-        birds: birdsArray
-      };
-    });
-
   }
-  searchHandler = (e) => {
-    this.setState({
-      searchInput: e.target.value
-    })
+
+  searchHandler = (event) => {
+    this.setState({ searchInput: event.target.value });
   }
+
 
   render() {
+    const { animals, birds, searchInput } = this.state;
+
+    // Filter the animals and birds
+    const filteredAnimals = animals.filter(animal => animal.name.includes(searchInput));
+    const filteredBirds = birds.filter(bird => bird.name.includes(searchInput));
+
     return (
-      <div>
+      <div className="App">
         <BrowserRouter>
-          <div>
-            <div>
-              <nav>
-                <ul>
-                  <li>
-                    <NavLink to="/">Home</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/animals">Animals({this.state.animals.length})</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/Birds">Birds({this.state.birds.length})</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="./About">About</NavLink>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="animals" element={<Animals data={this.state.animals} removeHandler={this.removeHandler}
-                likesHandler={this.likesHandler}
-                searchHandler={this.searchHandler}
-                searchInput={this.state.searchInput} />} />
-              <Route path="birds" element={<Birds data={this.state.birds}
-                removeHandler={this.removeHandler}
-                likesHandler={this.likesHandler}
-                searchHandler={this.searchHandler}
-                searchInput={this.state.searchInput} />} />
-              <Route path="About" element={<About />} />
-            </Routes>
-          </div>
+          <Header type={this.state} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/animals" element={<Animals
+              data={filteredAnimals}
+              searchInput={searchInput}
+              removeHandler={name => this.removeHandler('animals', name)}
+              likesHandler={(name, action) => this.likesHandler('animals', name, action)}
+              searchHandler={this.searchHandler}
+            />} />
+            <Route path="/birds" element={<Birds
+              data={filteredBirds}
+              searchInput={searchInput}
+              removeHandler={name => this.removeHandler('birds', name)}
+              likesHandler={(name, action) => this.likesHandler('birds', name, action)}
+              searchHandler={this.searchHandler}
+            />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+          <Footer />
         </BrowserRouter>
-        <Footer />
+
       </div>
-
-
-      // <div className='list'>
-      //   <Header title={this.state.title} />
-      //   <Animals data={this.state.animals} removeHandler={this.removeHandler}
-      //     likesHandler={this.likesHandler}
-      //     searchHandler={this.searchHandler}
-      //     searchInput={this.state.searchInput}
-      //   />
-      //   <Birds data={this.state.birds}
-      //     removeHandler={this.removeHandler}
-      //     likesHandler={this.likesHandler}
-      //     searchHandler={this.searchHandler}
-      //     searchInput={this.state.searchInput}
-      //   />
-      //   <Footer />
-      // </div>
     );
   }
 }

@@ -19,3 +19,20 @@
   color: white;
   padding: 1rem;
 }
+
+.animal_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+h2,
+h3,
+.search {
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

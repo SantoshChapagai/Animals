@@ -1,0 +1,46 @@
+header {
+  background-color: bisque;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+h1 {
+  margin: 0;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0;
+}
+
+nav ul li {
+  display: flex;
+  padding: 0.5rem;
+  font-size: larger;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+}
+
+.footer {
+  background-color: blanchedalmond;
+  width: 100%;
+  bottom: 0;
+  margin: 0;
+  padding: 0.5rem;
+}
+
+p {
+  text-align: center;
+}
+
+.active {
+  color: red;
+}
