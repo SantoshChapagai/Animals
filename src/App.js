@@ -14,7 +14,13 @@ class App extends Component {
     animals: animals,
     birds: birds,
     title: 'Animal Land',
-    searchInput: ''
+    searchInput: '',
+    data: []
+  }
+
+  componentDidMount() {
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=10&offset=0').then(res => res.json())
+      .then(res => this.setState({ data: res.results }))
   }
 
 
